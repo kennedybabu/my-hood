@@ -1,27 +1,22 @@
 from django.shortcuts import render
+from .models import Hood
 
 
 
 # Create your views here.
 
-
-hoods = [
-    {'id':1, 'name':'buruburu '},
-    {'id':2, 'name':'kitengela'},
-    {'id':3, 'name':'kiambu'}
-]
-
-
 def home(request):
-    return render(request, 'app/home.html', {'hoods':hoods})
+    hoods = Hood.objects.all()
+    context = {
+        'hoods':hoods
+    }
+    return render(request, 'app/home.html', context)
+
+    
 
 
 def hood(request, pk):
-    hood = None
-    for i in hoods:
-        if i['id']== pk:
-            hood = i
-
+    hood = Hood.objects.get(id=pk)    
     context = {
         'hood':hood
     }
