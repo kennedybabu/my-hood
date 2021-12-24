@@ -1,0 +1,17 @@
+{% extends 'base.html' %} 
+
+{% block content %} 
+
+<div class="container">
+     
+{% for hood in hoods %} 
+
+<div>
+    <h4>{{ hood.id }} -- <a href="{% url 'hood' hood.id %}">{{ hood.name }}</a></h4>
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}
