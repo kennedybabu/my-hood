@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Hood, Location
 from .forms import HoodForm
+from django.db.models import Q
 
 
 
@@ -9,14 +10,17 @@ from .forms import HoodForm
 def home(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ''
 
-    hoods = Hood.objects.filter(location__name__icontains=q)
+    hoods = Hood.objects.filter(Q(location__name__icontains=q) | Q(name__icontains=q))
     locations = Location.objects.all()
+    hood_count = hoods.count()
 
     context = {
         'hoods':hoods,
-        'locations':locations
+        'locations':locations,
+        'hood_count':hood_count
     }
     return render(request, 'app/home.html', context)
+
 
 def hood(request, pk):
     hood = Hood.objects.get(id=pk)    
@@ -24,6 +28,7 @@ def hood(request, pk):
         'hood':hood
     }
     return render(request, 'app/hood.html', context)
+
 
 def createHood(request):
     form = HoodForm()
