@@ -3,11 +3,17 @@
 {% block content %} 
 
 <div class="container">
-     
+     <h3>Home template</h3>
+     <a href="{% url 'create_hood' %}">create hood</a>
 {% for hood in hoods %} 
 
 <div>
+    <a href="{% url 'update_hood' hood.id %}">update hood</a>
+    <span>@{{ hood.host.username }}</span>
     <h4>{{ hood.id }} -- <a href="{% url 'hood' hood.id %}">{{ hood.name }}</a></h4>
+    
+    <small>{{hood.location.name}}</small>
+    <hr>
 </div>
 
 {% endfor %}
