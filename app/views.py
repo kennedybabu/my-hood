@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Hood
+from .models import Hood, Location
 from .forms import HoodForm
 
 
@@ -7,9 +7,14 @@ from .forms import HoodForm
 # Create your views here.
 
 def home(request):
-    hoods = Hood.objects.all()
+    q = request.GET.get('q') if request.GET.get('q') != None else ''
+
+    hoods = Hood.objects.filter(location__name__icontains=q)
+    locations = Location.objects.all()
+
     context = {
-        'hoods':hoods
+        'hoods':hoods,
+        'locations':locations
     }
     return render(request, 'app/home.html', context)
 
