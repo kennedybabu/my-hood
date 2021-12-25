@@ -5,15 +5,22 @@ from .forms import HoodForm
 from django.db.models import Q
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
-
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
+from django.contrib.auth.forms import UserCreationForm
 
 
 
 # Create your views here.
-
 def loginPage(request):
+    page = 'login'
+
+    if request.user.is_authenticated:
+        return redirect('home')
+
+
     if request.method == 'POST':
-        username = request.POST.get('username')
+        username = request.POST.get('username').lower()
         password = request.POST.get('password')
 
         try: 
@@ -30,7 +37,7 @@ def loginPage(request):
             messages.error(request, 'username or password does not exist')
 
     context = {
-
+        'page':page
     }
     return render(request, 'app/login_register.html', context)
 
@@ -38,7 +45,28 @@ def loginPage(request):
 def logoutUser(request):
     logout(request)
     return redirect('home')
-    
+
+
+def registerUser(request):
+    page = 'register'
+    form = UserCreationForm()
+
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.username = user.username.lower()
+            user.save()
+            login(request, user)
+            return redirect('home')
+        else:
+            messages.error(request, 'An error occured during registration')
+    context = {
+        'form':form
+    }
+
+    return render(request, 'app/login_register.html', context)
+
 
 def home(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ''
@@ -63,6 +91,7 @@ def hood(request, pk):
     return render(request, 'app/hood.html', context)
 
 
+@login_required(login_url='login')
 def createHood(request):
     form = HoodForm()
     if request.method == 'POST':
@@ -75,9 +104,13 @@ def createHood(request):
     return render(request, 'app/hood_form.html', context)
 
 
+@login_required(login_url='login')
 def updateHood(request, pk):
     hood = Hood.objects.get(id=pk)
     form = HoodForm(instance=hood)
+
+    if request.user != hood.host:
+        return HttpResponse('You are not allowed')
 
     if request.method == 'POST':
         form = HoodForm(request.POST, instance=hood)
@@ -90,8 +123,14 @@ def updateHood(request, pk):
     return render(request, 'app/hood_form.html', context)
 
 
+
+@login_required(login_url='login')
 def deleteHood(request, pk):
     hood = Hood.objects.get(id=pk)
+
+    if request.user != hood.host:
+        return HttpResponse('You are not allowed')
+
     if request.method == 'POST':
         hood.delete()
         return redirect('home')

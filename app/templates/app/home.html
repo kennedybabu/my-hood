@@ -27,11 +27,16 @@
         <div>
             <h5>{{ hood_count }} hoods available</h5>
             <a href="{% url 'create_hood' %}">create hood</a>
+
+
             {% for hood in hoods %} 
         
             <div>
-                <a href="{% url 'update_hood' hood.id %}">edit</a>
-                <a href="{% url 'delete_hood' hood.id %}">delete</a>
+                {% if request.user == hood.host %}
+                    <a href="{% url 'update_hood' hood.id %}">edit</a>
+                    <a href="{% url 'delete_hood' hood.id %}">delete</a>
+                {% endif %}
+
                 <span>@{{ hood.host.username }}</span>
                 <h4>{{ hood.id }} -- <a href="{% url 'hood' hood.id %}">{{ hood.name }}</a></h4>
                 
