@@ -8,7 +8,8 @@
 {% for hood in hoods %} 
 
 <div>
-    <a href="{% url 'update_hood' hood.id %}">update hood</a>
+    <a href="{% url 'update_hood' hood.id %}">edit</a>
+    <a href="{% url 'delete_hood' hood.id %}">delete</a>
     <span>@{{ hood.host.username }}</span>
     <h4>{{ hood.id }} -- <a href="{% url 'hood' hood.id %}">{{ hood.name }}</a></h4>
     

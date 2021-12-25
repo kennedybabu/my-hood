@@ -46,3 +46,13 @@ def updateHood(request, pk):
     }
     return render(request, 'app/hood_form.html', context)
 
+
+def deleteHood(request, pk):
+    hood = Hood.objects.get(id=pk)
+    if request.method == 'POST':
+        hood.delete()
+        return redirect('home')
+    context = {
+
+    }
+    return render(request, 'app/delete.html', {'obj':hood})
