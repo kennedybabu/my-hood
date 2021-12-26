@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import Hood, Location
+from .models import Hood, Location, Post
 from .forms import HoodForm
 from django.db.models import Q
 from django.contrib.auth.models import User
@@ -86,6 +86,14 @@ def home(request):
 def hood(request, pk):
     hood = Hood.objects.get(id=pk)  
     posts = hood.post_set.all().order_by('-created')  
+
+    if request.method == 'POST':
+        post = Post.objects.create(
+            user = request.user,
+            hood = hood,
+            body = request.POST.get('body')
+        )
+        return redirect('hood', pk=hood.id)
     context = {
         'hood':hood,
         'posts':posts
