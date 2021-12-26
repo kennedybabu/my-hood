@@ -14,7 +14,7 @@ class Hood(models.Model):
     host = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=100)
     location = models.ForeignKey(Location, on_delete=models.SET_NULL, null=True)
-    # occupants = 
+    occupants = models.ManyToManyField(User, related_name='occupants', blank=True)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
 

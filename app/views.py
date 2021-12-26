@@ -86,6 +86,7 @@ def home(request):
 def hood(request, pk):
     hood = Hood.objects.get(id=pk)  
     posts = hood.post_set.all().order_by('-created')  
+    occupants = hood.occupants.all()
 
     if request.method == 'POST':
         post = Post.objects.create(
@@ -96,7 +97,8 @@ def hood(request, pk):
         return redirect('hood', pk=hood.id)
     context = {
         'hood':hood,
-        'posts':posts
+        'posts':posts, 
+        'occupants':occupants
     }
     return render(request, 'app/hood.html', context)
 

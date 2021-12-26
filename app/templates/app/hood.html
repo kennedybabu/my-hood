@@ -1,32 +1,56 @@
 {% extends 'base.html' %} 
 
 {% block content %} 
+<style>
+    .hood-container {
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+    }
+</style>
 
-<h2>{{ hood.name }}</h2>
 
-<p>{{ hood.created }}</p>
+<div class="hood-container">
+    <div>
 
-<div class='comment-wrapper'>
-    <h4>conversations</h4>
-    {% for post in posts %} 
+        
+        <h2>{{ hood.name }}</h2>
 
-        <div>
-            <small>@{{ post.user }} {{ post.created | timesince }}</small>
-            <p>{{ post.body }}</p>
-            <hr>
-        </div>    
-    
-    {% endfor %}
+        <p>{{ hood.created }}</p>
+
+        <div class='comment-wrapper'>
+            <h4>conversations</h4>
+            {% for post in posts %} 
+
+                <div>
+                    <small>@{{ post.user }} {{ post.created | timesince }}</small>
+                    <p>{{ post.body }}</p>
+                    <hr>
+                </div>    
+            
+            {% endfor %}
+        </div>
+
+
+        {% if request.user.is_authenticated %}
+        <div class="comment-form">
+            <form action="" method='POST'>
+                {% csrf_token %}  
+
+                <input type="text" name='body' placeholder="create your post"/>
+            </form>
+        </div>
+        {% endif %}
+    </div>
+
+    <div>
+        <h2>occupants</h2>
+        <hr>
+        {% for user in occupants %} 
+            <div>
+                <p>@ {{ user.username }}</p>
+            </div>
+        
+        {% endfor %}
+    </div>
 </div>
-
-
-{% if request.user.is_authenticated %}
-<div class="comment-form">
-    <form action="" method='POST'>
-        {% csrf_token %}  
-
-        <input type="text" name='body' placeholder="create your post"/>
-    </form>
-</div>
-{% endif %}
 {% endblock %}
