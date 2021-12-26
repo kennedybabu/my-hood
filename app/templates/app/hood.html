@@ -4,4 +4,29 @@
 
 <h2>{{ hood.name }}</h2>
 
+<p>{{ hood.created }}</p>
+
+<div class='comment-wrapper'>
+    <h4>conversations</h4>
+    {% for post in posts %} 
+
+        <div>
+            <small>@{{ post.user }} {{ post.created | timesince }}</small>
+            <p>{{ post.body }}</p>
+            <hr>
+        </div>    
+    
+    {% endfor %}
+</div>
+
+
+{% if request.user.is_authenticated %}
+<div class="comment-form">
+    <form action="" method='POST'>
+        {% csrf_token %}  
+
+        <input type="text" name='body' placeholder="create your post"/>
+    </form>
+</div>
+{% endif %}
 {% endblock %}

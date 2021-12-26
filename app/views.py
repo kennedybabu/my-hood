@@ -84,9 +84,11 @@ def home(request):
 
 
 def hood(request, pk):
-    hood = Hood.objects.get(id=pk)    
+    hood = Hood.objects.get(id=pk)  
+    posts = hood.post_set.all().order_by('-created')  
     context = {
-        'hood':hood
+        'hood':hood,
+        'posts':posts
     }
     return render(request, 'app/hood.html', context)
 
