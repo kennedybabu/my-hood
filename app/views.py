@@ -94,6 +94,7 @@ def hood(request, pk):
             hood = hood,
             body = request.POST.get('body')
         )
+        hood.occupants.add(request.user)
         return redirect('hood', pk=hood.id)
     context = {
         'hood':hood,
