@@ -74,11 +74,13 @@ def home(request):
     hoods = Hood.objects.filter(Q(location__name__icontains=q) | Q(name__icontains=q))
     locations = Location.objects.all()
     hood_count = hoods.count()
+    posts = Post.objects.filter(Q(hood__location__name__icontains=q))
 
     context = {
         'hoods':hoods,
         'locations':locations,
-        'hood_count':hood_count
+        'hood_count':hood_count, 
+        'posts':posts
     }
     return render(request, 'app/home.html', context)
 
@@ -151,3 +153,20 @@ def deleteHood(request, pk):
 
     }
     return render(request, 'app/delete.html', {'obj':hood})
+
+
+
+@login_required(login_url='login')
+def deletePost(request, pk):
+    post = Post.objects.get(id=pk)
+
+    if request.user != post.user:
+        return HttpResponse('You are not allowed')
+
+    if request.method == 'POST':
+        post.delete()
+        return redirect('home')
+    context = {
+
+    }
+    return render(request, 'app/delete.html', {'obj':post})
