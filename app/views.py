@@ -119,6 +119,15 @@ def joinHood(request,pk):
     return render(request, 'app/hood.html', context)
 
 
+def quitHood(request, pk):
+    hood = Hood.objects.get(id=pk)
+    hood.occupants.remove(request.user)
+    context = {
+
+    }
+    return render(request, 'app/home.html', context)
+
+
 def userProfile(request , pk):
     user = User.objects.get(id=pk)
     hoods = user.hood_set.all()
