@@ -106,6 +106,14 @@ def hood(request, pk):
     return render(request, 'app/hood.html', context)
 
 
+def userProfile(request , pk):
+    user = User.objects.get(id=pk)
+    context = {
+        'user':user
+    }
+    return render(request, 'app/profile.html', context)
+
+
 @login_required(login_url='login')
 def createHood(request):
     form = HoodForm()

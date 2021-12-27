@@ -1,0 +1,18 @@
+<div>
+    {% for hood in hoods %} 
+
+    <div>
+        {% if request.user == hood.host %}
+            <a href="{% url 'update_hood' hood.id %}">edit</a>
+            <a href="{% url 'delete_hood' hood.id %}">delete</a>
+        {% endif %}
+
+        <a href="{% url 'user_profile' hood.host.id %}">@{{ hood.host.username }}</a>
+        <h4>{{ hood.id }} -- <a href="{% url 'hood' hood.id %}">{{ hood.name }}</a></h4>
+        
+        <small>{{hood.location.name}}</small>
+        <hr>
+    </div>
+
+    {% endfor %}
+</div>

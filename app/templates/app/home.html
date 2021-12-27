@@ -10,57 +10,19 @@
 
 <div class="container home-container">
         <div>
-            <h4>Browse Hoods</h4>
-            <hr>
-            <div>
-                <a href="{% url 'home' %}">All</a>
-            </div>
-            {% for locale in locations %}
-
-                <div>
-                    <a href="{% url 'home' %}?q={{ locale.name }}">{{ locale.name }}</a>
-                </div>
-                
-            {% endfor %}
+           {% include 'app/location_component.html' %}
         </div>
 
         <div>
             <h5>{{ hood_count }} hoods available</h5>
             <a href="{% url 'create_hood' %}">create hood</a>
 
-
-            {% for hood in hoods %} 
-        
-            <div>
-                {% if request.user == hood.host %}
-                    <a href="{% url 'update_hood' hood.id %}">edit</a>
-                    <a href="{% url 'delete_hood' hood.id %}">delete</a>
-                {% endif %}
-
-                <span>@{{ hood.host.username }}</span>
-                <h4>{{ hood.id }} -- <a href="{% url 'hood' hood.id %}">{{ hood.name }}</a></h4>
-                
-                <small>{{hood.location.name}}</small>
-                <hr>
-            </div>
-        
-            {% endfor %}
+            {% include 'app/feed_component.html' %}
+            
         </div>
         
         <div>
-            <h3>recent activity</h3>
-            <hr>
-            {% for post in posts %} 
-                <div>
-                    <small>@{{ post.user }} {{ post.created | timesince }}</small>
-                    <small>replied to '{{ post.hood }}'</small>
-                    <p>{{ post }}</p>
-                    {% if request.user == post.user %}
-                        <a href="{% url 'delete_post' post.id %}">delete</a>
-                    {% endif %}
-                    <hr>
-                </div>
-            {% endfor %}
+           {% include 'app/activity_component.html' %}
         </div>
   
 
