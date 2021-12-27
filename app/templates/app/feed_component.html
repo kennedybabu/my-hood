@@ -2,6 +2,8 @@
     {% for hood in hoods %} 
 
     <div>
+        <a href="{% url 'join_hood' hood.id %}">join hood</a>
+
         {% if request.user == hood.host %}
             <a href="{% url 'update_hood' hood.id %}">edit</a>
             <a href="{% url 'delete_hood' hood.id %}">delete</a>

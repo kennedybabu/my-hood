@@ -62,7 +62,8 @@ def registerUser(request):
         else:
             messages.error(request, 'An error occured during registration')
     context = {
-        'form':form
+        'form':form,
+        'page':page
     }
 
     return render(request, 'app/login_register.html', context)
@@ -96,7 +97,7 @@ def hood(request, pk):
             hood = hood,
             body = request.POST.get('body')
         )
-        hood.occupants.add(request.user)
+        
         return redirect('hood', pk=hood.id)
     context = {
         'hood':hood,
@@ -106,10 +107,28 @@ def hood(request, pk):
     return render(request, 'app/hood.html', context)
 
 
+def joinHood(request,pk):
+    hood = Hood.objects.get(id=pk)
+    hood.occupants.add(request.user)
+    occupants = hood.occupants.all()
+
+    context = {
+       'hood':hood,
+       'occupants':occupants 
+    }
+    return render(request, 'app/hood.html', context)
+
+
 def userProfile(request , pk):
     user = User.objects.get(id=pk)
+    hoods = user.hood_set.all()
+    posts = user.post_set.all()
+    locations = Location.objects.all()
     context = {
-        'user':user
+        'user':user,
+        'hoods':hoods,
+        'posts':posts,
+        'locations':locations
     }
     return render(request, 'app/profile.html', context)
 
