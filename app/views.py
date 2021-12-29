@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Hood, Location, Post
-from .forms import HoodForm
+from .forms import HoodForm, UserForm
 from django.db.models import Q
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
@@ -217,4 +217,15 @@ def deletePost(request, pk):
 
 @login_required(login_url='login')
 def updateUser(request):
-    return render(request, 'app/update_user.html')
+    user = request.user
+    form = UserForm(instance=user)
+    if request.method == 'POST':
+        form = UserForm(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect('user_profile', pk=user.id)
+
+    context = {
+        'form':form
+    }
+    return render(request, 'app/update_user.html', context)

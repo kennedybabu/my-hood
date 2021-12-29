@@ -1,1 +1,14 @@
-shit
+<form action="" method="POST">
+    {% csrf_token %}
+    {% for field in form %}
+    <div class="form-group">
+        <label for="">{{ field.label }}</label>
+        <!-- <input type="file" name='profile_pic' id='profile_pic'> -->
+        {{ field }}
+    </div>
+    {% endfor %}
+    <div class="form_action">
+        <a href="">cancel</a>
+        <button  type='submit'>update</button>
+    </div>
+</form>
