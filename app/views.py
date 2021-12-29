@@ -119,11 +119,15 @@ def joinHood(request,pk):
     return render(request, 'app/hood.html', context)
 
 
-def quitHood(request, pk):
+def quitHood(request,pk):
     hood = Hood.objects.get(id=pk)
     hood.occupants.remove(request.user)
+    posts = hood.post_set.all().order_by('-created')  
+    occupants = hood.occupants.all()
     context = {
-
+        'posts':posts,
+        'occupants':occupants,
+        'hood':hood
     }
     return render(request, 'app/home.html', context)
 

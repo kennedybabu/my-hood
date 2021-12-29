@@ -2,7 +2,7 @@
 <hr>
 {% for post in posts %} 
     <div>
-        <small>@{{ post.user }} {{ post.created | timesince }}</small>
+        <small><a href="{% url 'user_profile' post.user.id %}">@{{ post.user }}</a> {{ post.created | timesince }}</small>
         <small>replied to '{{ post.hood }}'</small>
         <p>{{ post }}</p>
         {% if request.user == post.user %}
