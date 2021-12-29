@@ -152,7 +152,9 @@ def createHood(request):
     if request.method == 'POST':
         form = HoodForm(request.POST)
         if form.is_valid():
-            form.save()
+            hood = form.save(commit=False)
+            hood.host = request.user
+            hood.save()
             return redirect('home')
 
     context = {'form':form}
@@ -210,3 +212,9 @@ def deletePost(request, pk):
 
     }
     return render(request, 'app/delete.html', {'obj':post})
+
+
+
+@login_required(login_url='login')
+def updateUser(request):
+    return render(request, 'app/update_user.html')
