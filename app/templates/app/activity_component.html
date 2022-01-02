@@ -1,13 +1,13 @@
 <h3>recent activity</h3>
 <hr>
 {% for post in posts %} 
-    <div>
+    <div class="post-activity">
 
         <div class="user-profile">
             <img src="{{ post.user.profile_pic.url }}" alt="">
         </div>
     
-        <small><a href="{% url 'user_profile' post.user.id %}">@{{ post.user }}</a> {{ post.created | timesince }}</small>
+        <small><a href="{% url 'user_profile' post.user.id %}">@{{ post.user.name }}</a> {{ post.created | timesince }}</small>
         <small>replied to '{{ post.hood }}'</small>
         <p>{{ post }}</p>
         {% if request.user == post.user %}

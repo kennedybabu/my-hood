@@ -1,17 +1,19 @@
 <div>
     {% for hood in hoods %} 
 
-        <div>
+        <div class="hood">
         
-            <a href="{% url 'join_hood' hood.id %}">join hood</a>
-            <a href="{% url 'quit_hood' hood.id  %}">quit hood</a>
+            <a href="{% url 'join_hood' hood.id %}"><span class="badge bg-success">join hood</span></a>
+            <a href="{% url 'quit_hood' hood.id  %}"><span class="badge bg-warning">quit hood</span></a>
             {% if request.user == hood.occupants %} 
                 <P>HOLA</P>
             {% endif %}
 
             {% if request.user == hood.host %}
                 <a href="{% url 'update_hood' hood.id %}">edit</a>
-                <a href="{% url 'delete_hood' hood.id %}">delete</a>
+                <a href="{% url 'delete_hood' hood.id %}"><span class="badge bg-danger">delete</span></a>
+                <span class="badge bg-success">Success</span>
+
             {% endif %}
 
             <a href="{% url 'user_profile' hood.host.id %}">@{{ hood.host.username }}</a>

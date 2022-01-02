@@ -15,14 +15,14 @@ body {
 }
 
 
-.navbar {
-    background-color: transparent;
+body > nav {
+    background-color: var(--antwerp-blue);
 }
 
 
 .home-container {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+    display: flex;
+    /* grid-template-columns: 1fr 2fr 1fr; */
     min-width: 90%;
 }
 
@@ -35,7 +35,28 @@ body {
 
 }
 
-.profile-container {
+body > div > div.right.col-md-3 > div {
+    display: flex;
+}
+
+
+body > div > div.middle.col-md-6 > div {
+    min-width: 100%;
+}
+
+
+body > div > div.middle.col-md-6 {
+    width: 100%;
+}
+
+.hood {
+    min-width: 80%;
+    padding: .3rem 1rem;
+    border-radius: 5px;
+    background-color: var(--antwerp-blue);
+}
+
+/* .profile-container {
     display: grid;
     grid-template-columns: 1fr 3fr 1fr;
 }
@@ -43,7 +64,7 @@ body {
 .hood-container {
     display: grid;
     grid-template-columns: 3fr 1fr;
-}
+} */
 
 .user-profile img {
     width: 40px;
@@ -54,4 +75,17 @@ body {
 .middle,
 .right {
     padding-top: 2rem;
+}
+
+
+.post-activity {
+    width: 90%;
+    flex-direction: column;
+}
+
+
+@media only screen and (min-width: 768px) {
+    .col-md-3 {
+        width: auto;
+    }
 }
