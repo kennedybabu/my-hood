@@ -1,11 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700&family=Nunito+Sans:wght@200;300;400;600&family=Nunito:ital,wght@0,400;0,700;1,200&family=Poppins:wght@100;300;500&display=swap');
+
+:root {
+    --avocado-green: #D9ED92;
+    --moss-green: #76C893;
+    --duck-blue: #34A0A4;
+    --antwerp-blue: #1A759F;
+    --puprle-hue: #184E77;
+}
+
+
 body {
     background-color: coral;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+.navbar {
+    background-color: transparent;
 }
 
 
 .home-container {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
+    min-width: 90%;
 }
 
 .profile-container {
@@ -21,4 +39,10 @@ body {
 .user-profile img {
     width: 40px;
     height: 40px;
+}
+
+.left,
+.middle,
+.right {
+    padding-top: 2rem;
 }

@@ -4,11 +4,11 @@
 
 
 <div class="container home-container">
-        <div>
+        <div class="left col-md-3">
            {% include 'app/location_component.html' %}
         </div>
 
-        <div>
+        <div class="middle col-md-6">
             <h5>{{ hood_count }} hoods available</h5>
             <a href="{% url 'create_hood' %}">create hood</a>
 
@@ -16,7 +16,7 @@
             
         </div>
         
-        <div>
+        <div class="right col-md-3">
            {% include 'app/activity_component.html' %}
         </div>
   
