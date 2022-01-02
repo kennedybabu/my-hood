@@ -12,17 +12,28 @@
 body {
     background-color: var(--duck-blue);
     font-family: 'Montserrat', sans-serif;
+    color: whitesmoke;
 }
 
 
 body > nav {
     background-color: var(--antwerp-blue);
+    color: whitesmoke;
+}
+
+
+body > nav > div > a {
+    color: whitesmoke;
+    font-weight: 600;
+}
+
+#navbarNavDropdown > ul > li > a {
+    color: whitesmoke;
 }
 
 
 .home-container {
     display: flex;
-    /* grid-template-columns: 1fr 2fr 1fr; */
     min-width: 90%;
 }
 
@@ -32,8 +43,8 @@ body > nav {
     margin-bottom: .5rem;
     color: whitesmoke;
     border-radius: 2px;
-
 }
+
 
 body > div > div.right.col-md-3 > div {
     display: flex;
@@ -49,26 +60,38 @@ body > div > div.middle.col-md-6 {
     width: 100%;
 }
 
+.form-wrapper {
+    margin: 0 auto;
+    width: 60%;
+    height: auto;
+}
+
+
 .hood {
     min-width: 80%;
     padding: .3rem 1rem;
     border-radius: 5px;
     background-color: var(--antwerp-blue);
+
+    box-shadow: -6px 5px 9px -5px rgba(0,0,0,0.6);
+-webkit-box-shadow: -6px 5px 9px -5px rgba(0,0,0,0.6);
+-moz-box-shadow: -6px 5px 9px -5px rgba(0,0,0,0.6);
 }
 
-/* .profile-container {
-    display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
+
+body > div > div.middle.col-md-6 > div > div > a {
+    color: whitesmoke;
 }
 
-.hood-container {
-    display: grid;
-    grid-template-columns: 3fr 1fr;
-} */
+
+body > div > div.middle.col-md-6 > div > div > h4 > a {
+    color: whitesmoke;
+}
 
 .user-profile img {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
 }
 
 .left,
@@ -77,10 +100,38 @@ body > div > div.middle.col-md-6 {
     padding-top: 2rem;
 }
 
-
 .post-activity {
     width: 90%;
+    padding: .4rem .5rem;
     flex-direction: column;
+    border-radius: 5px;
+    background-color: var(--antwerp-blue);
+
+    box-shadow: -6px 5px 9px -5px rgba(0,0,0,0.6);
+-webkit-box-shadow: -6px 5px 9px -5px rgba(0,0,0,0.6);
+-moz-box-shadow: -6px 5px 9px -5px rgba(0,0,0,0.6);
+}
+
+
+body > div > div.right.col-md-3 > div > div.user-profile {
+    margin-top: 5px;
+}
+
+
+.paragraph {
+    background-color: var(--puprle-hue);
+    padding: 2px 1px 1px 5px;
+    border-radius: 3px;
+}
+
+
+body > div > div.right.col-md-3 > div> div > small > a {
+    color: whitesmoke;
+}
+
+
+.bg-danger {
+    color: whitesmoke;
 }
 
 
