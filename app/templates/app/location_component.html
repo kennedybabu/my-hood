@@ -5,7 +5,7 @@
 </div>
 {% for locale in locations %}
 
-    <div>
+    <div class="locale-name">
         <a href="{% url 'home' %}?q={{ locale.name }}">{{ locale.name }}</a>
     </div>
     

@@ -10,7 +10,7 @@
 
 
 body {
-    background-color: coral;
+    background-color: var(--duck-blue);
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -24,6 +24,15 @@ body {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     min-width: 90%;
+}
+
+.locale-name a {
+    background-color: var(--puprle-hue);
+    padding: .1rem .2rem;
+    margin-bottom: .5rem;
+    color: whitesmoke;
+    border-radius: 2px;
+
 }
 
 .profile-container {
