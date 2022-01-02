@@ -1,7 +1,16 @@
 from django.forms import ModelForm
-from.models import Hood
-from django.contrib.auth.models import User
+from.models import Hood, User
+from django.contrib.auth.forms import UserCreationForm
 
+
+
+class MyUserCreationForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ['name', 'username', 'email', 'password1', 'password2']
+
+
+        
 class HoodForm(ModelForm):
     class Meta:
         model = Hood
@@ -12,4 +21,4 @@ class HoodForm(ModelForm):
 class UserForm(ModelForm):
     class Meta:
         model = User
-        fields = ['username', 'email']
+        fields = ['name','username','email','profile_pic','bio']
