@@ -2,16 +2,13 @@
 
 {% block content %} 
 
-<style>
-    .profile-container {
-        display: grid;
-        grid-template-columns: 1fr 3fr 1fr;
-    }
-</style>
+
 <h1>{{ user.username }}</h1>
 
     <a href="{% url 'update_user' %}">update profile</a>
-    <img src="{{ user.profile_pic.url }}" alt="">
+    <div class="user-profile">
+        <img src="{{ user.profile_pic.url }}" alt="">
+    </div>
 
 <div class='profile-container'>
     <div>

@@ -2,6 +2,11 @@
 <hr>
 {% for post in posts %} 
     <div>
+
+        <div class="user-profile">
+            <img src="{{ post.user.profile_pic.url }}" alt="">
+        </div>
+    
         <small><a href="{% url 'user_profile' post.user.id %}">@{{ post.user }}</a> {{ post.created | timesince }}</small>
         <small>replied to '{{ post.hood }}'</small>
         <p>{{ post }}</p>

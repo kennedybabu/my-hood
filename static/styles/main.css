@@ -1,3 +1,24 @@
 body {
     background-color: coral;
 }
+
+
+.home-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+}
+
+.profile-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+}
+
+.hood-container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+
+.user-profile img {
+    width: 40px;
+    height: 40px;
+}
