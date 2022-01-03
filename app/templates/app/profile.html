@@ -1,11 +1,6 @@
 {% extends 'base.html' %}
 
-{% block content %} 
-
-
-<h1>{{ user.username }}</h1>
-
-    
+{% block content %}     
 
 <div class='profile-container container'>
     <div class="row">
@@ -17,6 +12,7 @@
             <div class="user-profile">
                 <img src="{{ user.profile_pic.url }}" alt="">
             </div>
+            <h4>@{{ user.username }}</h4>
             <a class='my-3' href="{% url 'update_user' %}">update profile</a>
             <p>{{ user.bio }} </p>
 

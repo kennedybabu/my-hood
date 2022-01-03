@@ -25,9 +25,27 @@ class Hood(models.Model):
     occupants = models.ManyToManyField(User, related_name='occupants', blank=True)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
+    description = models.TextField(null=True)
+    fire_department = models.IntegerField(null=True)
+    hospital_contact = models.IntegerField(null=True)
+    security_department = models.IntegerField(null=True)
 
     class Meta:
         ordering = ['-updated', '-created']
+
+    def __str__(self):
+        return self.name
+
+class Business(models.Model):
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=150)
+    neighborhood = models.ForeignKey(Hood, on_delete=models.CASCADE)
+    email = models.EmailField(unique=True)
+    created = models.DateTimeField(auto_now_add=True)
+    contact = models.IntegerField()
+
+    class Meta:
+        ordering = ['-created']
 
     def __str__(self):
         return self.name
