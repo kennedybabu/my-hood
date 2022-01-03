@@ -15,7 +15,6 @@ urlpatterns = [
     path('join_hood/<int:pk>/', views.joinHood, name='join_hood'),
     path('quit_hood/<int:pk>/', views.quitHood, name='quit_hood'),
     path('update_user/', views.updateUser, name='update_user'),
-
-
-
+    path('create_business/<int:pk>/', views.createBusiness, name='create_business')
+    
 ]

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Hood, Location, Post, User
-from .forms import HoodForm, UserForm, MyUserCreationForm
+from .forms import HoodForm, UserForm, MyUserCreationForm, BusinessForm
 from django.db.models import Q
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -157,6 +157,24 @@ def createHood(request):
 
     context = {'form':form}
     return render(request, 'app/hood_form.html', context)
+
+
+def createBusiness(request, pk):
+    hood = Hood.objects.get(id=pk)
+    form = BusinessForm()
+
+    if request.method == 'POST':
+        form = BusinessForm(request.POST)
+        if form.is_valid():
+            business = form.save(commit=False)
+            business.neighborhood = hood
+            business.save()
+            return redirect('home')
+    context = {
+        'form':form,
+        'hood': hood
+    }
+    return render(request, 'app/create_business.html', context)
 
 
 @login_required(login_url='login')
