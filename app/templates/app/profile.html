@@ -5,22 +5,27 @@
 
 <h1>{{ user.username }}</h1>
 
-    <a href="{% url 'update_user' %}">update profile</a>
-    <div class="user-profile">
-        <img src="{{ user.profile_pic.url }}" alt="">
-    </div>
+    
 
-<div class='profile-container'>
-    <div>
-        {% include 'app/location_component.html' %}
-    </div>
+<div class='profile-container container'>
+    <div class="row">
+        <div class="col-md-3">
+            {% include 'app/location_component.html' %}
+        </div>
+    
+        <div class="col-md-6 profile-col">
+            <div class="user-profile">
+                <img src="{{ user.profile_pic.url }}" alt="">
+            </div>
+            <a class='my-3' href="{% url 'update_user' %}">update profile</a>
+            <p>{{ user.bio }} </p>
 
-    <div>
-        {% include 'app/feed_component.html' %}
-    </div>
-
-    <div>
-        {% include 'app/activity_component.html' %}
+            <!-- {% include 'app/feed_component.html' %} -->
+        </div>
+    
+        <div class="col-md-3">
+            {% include 'app/activity_component.html' %}
+        </div>
     </div>
 </div>
 

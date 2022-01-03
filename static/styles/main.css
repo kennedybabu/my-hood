@@ -79,6 +79,20 @@ body > div > div.middle.col-md-6 {
 }
 
 
+.comment-wrapper {
+    background-color: var(--antwerp-blue);
+    padding: 3px 5px;
+    border-radius: 3px;
+}
+
+.comment-wrapper input {
+    background-color: #184e77cb;
+    border: 0;
+    outline: 0;
+    color: whitesmoke;
+}
+
+
 body > div > div.middle.col-md-6 > div > div > a {
     color: whitesmoke;
 }
@@ -92,12 +106,45 @@ body > div > div.middle.col-md-6 > div > div > h4 > a {
     width: 30px;
     height: 30px;
     border-radius: 50px;
+    border: 2px solid var(--avocado-green);
+}
+
+
+.occupant-profile {
+    display: flex;
+}
+
+
+.occupant-profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    border: 2px solid rgb(233, 98, 98);
+}
+
+
+.occupant-name {
+    padding-left: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .left,
 .middle,
 .right {
     padding-top: 2rem;
+}
+
+.post {
+    background-color: var(--puprle-hue);
+    padding: 5px;
+    width: 96%;
+    border-radius: 3px;
+}
+
+.post small {
+    font-weight: 600;
 }
 
 .post-activity {
@@ -132,6 +179,31 @@ body > div > div.right.col-md-3 > div> div > small > a {
 
 .bg-danger {
     color: whitesmoke;
+}
+
+.profile-col {
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color:var(--antwerp-blue);
+    border-radius: 5px;
+}
+
+
+.profile-col a {
+    color: rgb(22, 22, 22);
+    background-color: var(--moss-green);
+    border-radius: 15px;
+    padding: 3px 5px;
+    border: 1px solid tomato;
+}
+
+
+.profile-col img {
+    width: 80px;
+    height: 80px;
 }
 
 

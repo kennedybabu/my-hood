@@ -2,57 +2,64 @@
 
 {% block content %} 
 
-<div class="hood-container container">
-    <div>
+<div class="hood-container container my-2">
+    <div class="row">
+        <div class="col-md-6">
 
-        <h2>{{ hood.name }}</h2>
+            <h2>{{ hood.name }}</h2>
 
-        <p>{{ hood.created }}</p>
-        {% if request.user == hood.occupants %}
-            <p>check this out</p>
-        {% endif %}
-
-        <div class='comment-wrapper'>
+            <p>{{ hood.created }}</p>            
             <h4>conversations</h4>
-            {% for post in posts %} 
+            <div class='comment-wrapper'>
+                
+                {% for post in posts %} 
 
+                    <div class="post my-2">
+                        {% if request.user == post.user %}
+                            <a href="{% url 'delete_post' post.id %}"><span class="badge bg-danger">delete</span></a>
+                        {% endif %}
+                        <div class="user-profile">
+                            <img src="{{ user.profile_pic.url }}" alt="">
+                        </div>
+                                    
+                        <small>@{{ post.user.name }} {{ post.created | timesince }}</small>
+                        <p>{{ post.body }}</p>
+                        <hr>
+                    </div>    
+                
+                {% endfor %}
+
+                {% if request.user.is_authenticated %}
+                <div class="comment-form my-3">
+                    <form action="" method='POST'>
+                        {% csrf_token %} 
+                        <input type="text" name='body' placeholder="create your post"/>
+                    </form>
+                </div>
+                {% endif %}
+            </div>
+
+
+            
+        </div>
+
+        <div class="col-md-6">
+            <h2>occupants</h2>
+            <hr>
+            {% for user in occupants %} 
                 <div>
-                    {% if request.user == post.user %}
-                        <a href="{% url 'delete_post' post.id %}">delete</a>
-                    {% endif %}
-                    <div class="user-profile">
-                        <img src="{{ user.profile_pic.url }}" alt="">
-                    </div>
-                                   
-                    <small>@{{ post.user }} {{ post.created | timesince }}</small>
-                    <p>{{ post.body }}</p>
-                    <hr>
-                </div>    
+                    <div class="occupant-profile my-3">
+                        <div>
+                            <img src="{{ user.profile_pic.url }}" alt="">
+                        </div>
+                        <div class="occupant-name">
+                            <p>@{{ user.username }}</p>
+                        </div>
+                    </div>                    
+                </div>
             
             {% endfor %}
         </div>
-
-
-        {% if request.user.is_authenticated %}
-        <div class="comment-form">
-            <form action="" method='POST'>
-                {% csrf_token %}  
-
-                <input type="text" name='body' placeholder="create your post"/>
-            </form>
-        </div>
-        {% endif %}
-    </div>
-
-    <div>
-        <h2>occupants</h2>
-        <hr>
-        {% for user in occupants %} 
-            <div>
-                <p>@ {{ user.username }}</p>
-            </div>
-        
-        {% endfor %}
     </div>
 </div>
 {% endblock %}
