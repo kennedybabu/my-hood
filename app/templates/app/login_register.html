@@ -1,5 +1,7 @@
 {% extends 'base.html' %} 
 
+{% load bootstrap4 %}
+
 
 {% block content %}
 {% if page == 'login' %}
@@ -19,10 +21,11 @@
     </div>
 
 {% else %}
-    <div>
+    <div class="form-wrapper">
         <form action="" method='post'>
-            {% csrf_token %}          
-            {{ form.as_p }}
+            {% csrf_token %}  
+            {% bootstrap_form form %}        
+            <!-- {{ form.as_p }} -->
             <input type="submit" value="register">
         </form>
         <p>Already signed up?</p>
