@@ -64,7 +64,56 @@ body > div > div.middle.col-md-6 {
     margin: 0 auto;
     width: 50%;
     height: auto;
+    padding: 1rem .5rem;
+    background-color: var(--antwerp-blue);
+    color: whitesmoke;
+    border-radius: 5px;
+    text-align: center;
 
+    box-shadow: -6px 5px 9px -5px rgba(0,0,0,0.6);
+-webkit-box-shadow: -6px 5px 9px -5px rgba(0,0,0,0.6);
+-moz-box-shadow: -6px 5px 9px -5px rgba(0,0,0,0.6);
+}
+
+
+.login-page {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--antwerp-blue);
+    width: 500px;
+    margin: 5rem auto;
+    padding: 1rem .5rem;
+    text-align: center;
+    border-radius: 3px;
+}
+
+.login-page a {
+    background-color: var(--duck-blue);
+    padding: .3rem .5rem;
+    border-radius: 15px;
+    width: 100px;
+    margin: 0 auto;
+    color: black;
+}
+
+
+.form-wrapper a {
+    background-color: var(--duck-blue);
+    padding: .3rem .5rem;
+    border-radius: 15px;
+    width: 100px;
+    margin: 0 auto;
+    color: black;
+}
+
+.login-btn {
+    background-color: var(--duck-blue);
+    padding: .3rem .5rem;
+    border-radius: 15px;
+    width: 100px;
+    margin: 0 auto;
+    border: none;
+    outline: none;
 }
 
 

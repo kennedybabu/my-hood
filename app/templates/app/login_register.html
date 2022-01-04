@@ -5,28 +5,33 @@
 
 {% block content %}
 {% if page == 'login' %}
-    <div>
+    <div class="login-page">
         <form action="" method='post'>
             {% csrf_token %} 
-            <label>username:</label>
-            <input type="text" name='username' placeholder="Enter username">
+            <div class="form-group">
+                <label>username:</label>
+                <input type="text" name='username' placeholder="Enter username">
+            </div>
 
-            <label>username:</label>
-            <input type="password" name='password' placeholder="Enter password">
-            
-            <input type="submit" value="login">
+            <div class="form-group">
+                <label>username:</label>
+                <input type="password" name='password' placeholder="Enter password">
+            </div>
+            <input type="submit" value="login" class="login-btn">
         </form>
         <p>Havent signed up yet?</p>
         <a href="{% url 'register' %}">sign up</a>
     </div>
 
 {% else %}
-    <div class="form-wrapper">
+    
+    <div class="form-wrapper my-3">
+        <h3>register</h3>
         <form action="" method='post'>
             {% csrf_token %}  
             {% bootstrap_form form %}        
             <!-- {{ form.as_p }} -->
-            <input type="submit" value="register">
+            <input type="submit" value="register" class="login-btn">
         </form>
         <p>Already signed up?</p>
         <a href="{% url 'login' %}">login</a>
