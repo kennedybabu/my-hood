@@ -27,6 +27,12 @@ body > nav > div > a {
     font-weight: 600;
 }
 
+
+body > nav > div > a:hover {
+    color: whitesmoke;
+}
+
+
 #navbarNavDropdown > ul > li > a {
     color: whitesmoke;
 }
@@ -43,6 +49,11 @@ body > nav > div > a {
     margin-bottom: .5rem;
     color: whitesmoke;
     border-radius: 2px;
+}
+
+
+.locale-name a:hover {
+    text-decoration: none;
 }
 
 
@@ -118,6 +129,17 @@ body > div > div.middle.col-md-6 {
     padding: .3rem .5rem;
     border-radius: 15px;
     width: 100px;
+    margin: 0 auto;
+    border: none;
+    outline: none;
+}
+
+
+.create-btn {
+    width: auto;
+    background-color: var(--duck-blue);
+    padding: .3rem .5rem;
+    border-radius: 15px;
     margin: 0 auto;
     border: none;
     outline: none;

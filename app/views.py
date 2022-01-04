@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import Hood, Location, Post, User
+from .models import Hood, Location, Post, User, Business
 from .forms import HoodForm, UserForm, MyUserCreationForm, BusinessForm
 from django.db.models import Q
 from django.contrib.auth import authenticate, login, logout
