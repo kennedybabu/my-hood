@@ -87,6 +87,13 @@ body > div > div.middle.col-md-6 {
     border-radius: 3px;
 }
 
+
+.login-page input {
+    border-radius: 3px;
+    border: none;
+    outline: none;
+}
+
 .login-page a {
     background-color: var(--duck-blue);
     padding: .3rem .5rem;
