@@ -183,6 +183,7 @@ body > div > div.middle.col-md-6 {
     border-radius: 3px;
 }
 
+
 .comment-wrapper input {
     background-color: #184e77cb;
     border: 0;
@@ -317,10 +318,16 @@ body > div > div.right.col-md-3 > div> div > small > a {
 }
 
 
+.info {
+    padding-left: .5rem;
+}
+
+
 .info-icons {
     background-color: var(--antwerp-blue);
     padding: .5rem 1rem;
     width: auto;
+    border-radius: 5px;
 }
 
 
@@ -328,6 +335,17 @@ body > div > div.right.col-md-3 > div> div > small > a {
     width: 20px;
     height: 20px;
 }
+
+
+.hood-container {
+    padding-top: 2rem;
+}
+
+
+body > div > div > div > a {
+    margin: 1rem 0;
+}
+
 
 
 @media only screen and (min-width: 768px) {

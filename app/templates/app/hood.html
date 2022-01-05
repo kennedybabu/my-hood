@@ -4,21 +4,19 @@
 
 <div class="hood-container container my-2">
     <div class="row">
-        <div class="col-md-6">
-
+        <div class="col-md-3">
+            
             <h2>{{ hood.name }}</h2>
-
             <p>{{ hood.created }}</p>   <br>
-            <small>{{ hood.description }}</small>  <br>
-           
-         
+            <small>{{ hood.description }}</small>           
+
             <div class="info-icons">
                 <div class="icon">
                     <div class="image">
                         <img src="https://res.cloudinary.com/dblrvhi8r/image/upload/v1641312304/fire_iqpriw.svg" alt="fire_department icon">
                     </div>
                     <div class="info">
-                        <small>{{ hood.fire_department }}</small>
+                        <small>{{ hood.fire_department }} (fire department)</small>
                     </div>
                 </div>
 
@@ -27,7 +25,7 @@
                         <img src="https://res.cloudinary.com/dblrvhi8r/image/upload/v1641312304/police_nzenev.svg" alt="police_department icon">
                     </div>
                     <div class="info">
-                        <small>{{ hood.security_department }}</small>
+                        <small>{{ hood.security_department }} (security department)</small>
                     </div>
                 </div>
 
@@ -36,10 +34,21 @@
                         <img src="https://res.cloudinary.com/dblrvhi8r/image/upload/v1641312304/hospital_ys7y2s.svg" alt="health_department icon">
                     </div>
                     <div class="info">
-                        <small>{{ hood.hospital_contact }}</small>
+                        <small>{{ hood.hospital_contact }} (health centre)</small>
                     </div>
                 </div>
-            </div>       
+            </div> 
+            
+            <div class="my-3">
+                <a href="{% url 'create_business' hood.id %}" class="create-anchor">create business</a> 
+            </div>
+        </div>
+
+        <div class="col-md-6">
+
+           
+         
+               
             <h4>conversations</h4>
             <div class='comment-wrapper'>
                 
@@ -89,13 +98,8 @@
                     </div>                    
                 </div>
             
-            {% endfor %}
-
-            
-        </div>
-        <div class="col-md-3">
-            <a href="{% url 'create_business' hood.id %}" class="create-anchor">create business</a>          
-        </div>
+            {% endfor %}            
+        </div>        
     </div>
 </div>
 {% endblock %}
