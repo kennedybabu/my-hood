@@ -1,14 +1,19 @@
-<form action="" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {% for field in form %}
-    <div class="form-group">
-        <label for="">{{ field.label }}</label>
-        <!-- <input type="file" name='profile_pic' id='profile_pic'> -->
-        {{ field }}
-    </div>
-    {% endfor %}
-    <div class="form_action">
-        <a href="{{ request.META.HTTP_REFERER }}">cancel</a>
-        <button  type='submit'>update</button>
-    </div>
-</form>
+{% extends 'base.html' %}  
+
+{% load bootstrap4 %}
+
+{% block content %} 
+
+<div class="form-wrapper">
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        
+        <div class="form_action">
+            <a href="{{ request.META.HTTP_REFERER }}">cancel</a>
+            <button  type='submit' class="create-btn">update</button>
+        </div>
+    </form>
+    
+</div>
+{% endblock %}

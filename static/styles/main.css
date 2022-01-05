@@ -43,6 +43,7 @@ body > nav > div > a:hover {
     min-width: 90%;
 }
 
+
 .locale-name a {
     background-color: var(--puprle-hue);
     padding: .1rem .2rem;
@@ -71,6 +72,7 @@ body > div > div.middle.col-md-6 {
     width: 100%;
 }
 
+
 .form-wrapper {
     margin: 0 auto;
     width: 50%;
@@ -96,6 +98,10 @@ body > div > div.middle.col-md-6 {
     padding: 1rem .5rem;
     text-align: center;
     border-radius: 3px;
+
+    box-shadow: -6px 5px 9px -5px rgba(0,0,0,0.6);
+    -webkit-box-shadow: -6px 5px 9px -5px rgba(0,0,0,0.6);
+    -moz-box-shadow: -6px 5px 9px -5px rgba(0,0,0,0.6);
 }
 
 
@@ -104,6 +110,7 @@ body > div > div.middle.col-md-6 {
     border: none;
     outline: none;
 }
+
 
 .login-page a {
     background-color: var(--duck-blue);
@@ -124,6 +131,7 @@ body > div > div.middle.col-md-6 {
     color: black;
 }
 
+
 .login-btn {
     background-color: var(--duck-blue);
     padding: .3rem .5rem;
@@ -138,6 +146,17 @@ body > div > div.middle.col-md-6 {
 .create-btn {
     width: auto;
     background-color: var(--duck-blue);
+    padding: .3rem .5rem;
+    border-radius: 15px;
+    margin: 0 auto;
+    border: none;
+    outline: none;
+}
+
+
+.create-anchor {
+    width: auto;
+    background-color: var(--avocado-green);
     padding: .3rem .5rem;
     border-radius: 15px;
     margin: 0 auto;
@@ -181,6 +200,7 @@ body > div > div.middle.col-md-6 > div > div > h4 > a {
     color: whitesmoke;
 }
 
+
 .user-profile img {
     width: 30px;
     height: 30px;
@@ -209,11 +229,13 @@ body > div > div.middle.col-md-6 > div > div > h4 > a {
     justify-content: center;
 }
 
+
 .left,
 .middle,
 .right {
     padding-top: 2rem;
 }
+
 
 .post {
     background-color: var(--puprle-hue);
@@ -222,9 +244,11 @@ body > div > div.middle.col-md-6 > div > div > h4 > a {
     border-radius: 3px;
 }
 
+
 .post small {
     font-weight: 600;
 }
+
 
 .post-activity {
     width: 90%;
@@ -260,6 +284,7 @@ body > div > div.right.col-md-3 > div> div > small > a {
     color: whitesmoke;
 }
 
+
 .profile-col {
     display: flex;
     align-content: center;
@@ -268,6 +293,7 @@ body > div > div.right.col-md-3 > div> div > small > a {
     align-items: center;
     background-color:var(--antwerp-blue);
     border-radius: 5px;
+    margin-top: 5rem;
 }
 
 
@@ -283,6 +309,24 @@ body > div > div.right.col-md-3 > div> div > small > a {
 .profile-col img {
     width: 80px;
     height: 80px;
+}
+
+
+.icon {
+    display: flex;
+}
+
+
+.info-icons {
+    background-color: var(--antwerp-blue);
+    padding: .5rem 1rem;
+    width: auto;
+}
+
+
+.image img {
+    width: 20px;
+    height: 20px;
 }
 
 

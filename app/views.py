@@ -88,6 +88,7 @@ def hood(request, pk):
     hood = Hood.objects.get(id=pk)  
     posts = hood.post_set.all().order_by('-created')  
     occupants = hood.occupants.all()
+    businesses = hood.biashara.all()
 
     if request.method == 'POST':
         post = Post.objects.create(
@@ -100,7 +101,8 @@ def hood(request, pk):
     context = {
         'hood':hood,
         'posts':posts, 
-        'occupants':occupants
+        'occupants':occupants,
+        'businesses':businesses
     }
     return render(request, 'app/hood.html', context)
 
@@ -158,18 +160,37 @@ def createHood(request):
     context = {'form':form}
     return render(request, 'app/hood_form.html', context)
 
-
+@login_required(login_url='login')
 def createBusiness(request, pk):
     hood = Hood.objects.get(id=pk)
     form = BusinessForm()
+    user = request.user
 
+    # if request.method == 'POST':
+    #     form = BusinessForm(request.POST)
+        # if form.is_valid():
+        #     business = form.save(commit=False)
+        #     business.owner = user
+        #     business.neighborhood = hood
+        #     business.save()
+        #     return redirect('home')
     if request.method == 'POST':
-        form = BusinessForm(request.POST)
-        if form.is_valid():
-            business = form.save(commit=False)
-            business.neighborhood = hood
-            business.save()
-            return redirect('home')
+        business = Business.objects.create (
+            owner = user,
+            neighborhood = hood,
+            name = request.POST.get('name'),
+            email= request.POST.get('email'),
+            contact = request.POST.get('contact'),
+
+        )
+        return redirect('hood', pk=hood.id)
+
+        # if request.method == 'POST':
+        #     post = Post.objects.create(
+        #     user = request.user,
+        #     hood = hood,
+        #     body = request.POST.get('body')
+        # )
     context = {
         'form':form,
         'hood': hood

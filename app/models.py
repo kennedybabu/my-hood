@@ -29,6 +29,7 @@ class Hood(models.Model):
     fire_department = models.IntegerField(null=True)
     hospital_contact = models.IntegerField(null=True)
     security_department = models.IntegerField(null=True)
+    biashara = models.ManyToManyField('Business', related_name='biashara', blank=True)
 
     class Meta:
         ordering = ['-updated', '-created']
@@ -48,7 +49,7 @@ class Business(models.Model):
         ordering = ['-created']
 
     def __str__(self):
-        return self.name
+        return self.name 
 
 
 class Post(models.Model):

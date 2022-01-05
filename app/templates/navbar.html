@@ -20,6 +20,9 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'logout' %}">logout</a>
           </li>
+          <li>
+            <a href="{% url 'user_profile' user.id %}" class="nav-link">hello, {{ user.username }}</a>
+          </li>
           {% else %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'login' %}">login</a>
