@@ -15,7 +15,7 @@ class HoodForm(ModelForm):
     class Meta:
         model = Hood
         fields = '__all__'
-        exclude = ['host', 'occupants']
+        exclude = ['host', 'occupants', 'biashara']
 
 
 class UserForm(ModelForm):
