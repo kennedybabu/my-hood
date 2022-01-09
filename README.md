@@ -1,11 +1,11 @@
 # hood
-lets neighbours join in channels where announcements concerning their areas of stay are made. An individual can sign up for the application, join channel, post and view posts in the channels.
+lets people living in the same area to join channels where announcements concerning their areas of stay are made. An individual can sign up for the application, join channel, post and view posts in the channels.
 
 
 ## Technologies Used
 
 - HTML & CSS (Bootstrap)
-- LucidChart to create the ERD diagram
+- LucidChart to create the ERD diagram 
 - Python for the functionalities
 - SQLAlchemy for the database
 - Django as the framework

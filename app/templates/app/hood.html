@@ -7,7 +7,7 @@
         <div class="col-md-3">
             
             <h2>{{ hood.name }}</h2>
-            <p>{{ hood.created }}</p>   <br>
+            <p>created: {{ hood.created }}</p>   <br>
             <small>{{ hood.description }}</small>           
 
             <div class="info-icons">
@@ -56,7 +56,7 @@
                             <a href="{% url 'delete_post' post.id %}"><span class="badge bg-danger">delete</span></a>
                         {% endif %}
                         <div class="user-profile">
-                            <img src="{{ user.profile_pic.url }}" alt="">
+                            <img src="{{ user.profile_pic.url }}" alt="profile_pic">
                         </div>
                                     
                         <small>@{{ post.user.name }} {{ post.created | timesince }}</small>
