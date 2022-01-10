@@ -165,14 +165,6 @@ def createBusiness(request, pk):
     form = BusinessForm()
     user = request.user
 
-    # if request.method == 'POST':
-    #     form = BusinessForm(request.POST)
-        # if form.is_valid():
-        #     business = form.save(commit=False)
-        #     business.owner = user
-        #     business.neighborhood = hood
-        #     business.save()
-        #     return redirect('home')
     if request.method == 'POST':
         business = Business.objects.create (
             owner = user,
@@ -182,14 +174,7 @@ def createBusiness(request, pk):
             contact = request.POST.get('contact'),
 
         )
-        return redirect('hood', pk=hood.id)
-
-        # if request.method == 'POST':
-        #     post = Post.objects.create(
-        #     user = request.user,
-        #     hood = hood,
-        #     body = request.POST.get('body')
-        # )
+        return redirect('hood', pk=hood.id)     
     context = {
         'form':form,
         'hood': hood

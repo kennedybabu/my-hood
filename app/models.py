@@ -37,6 +37,19 @@ class Hood(models.Model):
     def __str__(self):
         return self.name
 
+
+    def create_hood(self):
+        self.save()
+        
+    @classmethod
+    def delete_hood(cls, hood_name):
+        cls.objects.filter(hood_name=hood_name).delete()
+   
+
+    def update_hood(self, hood_name):
+        self.hood_name = hood_name
+        self.save()
+
 class Business(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=150)
